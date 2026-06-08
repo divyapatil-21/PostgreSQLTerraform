@@ -1,0 +1,17 @@
+PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
+
+POSTGRES_HOST="localhost"
+POSTGRES_PORT="5433"
+POSTGRES_DB="DataManagementDB"
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="Postgres@123"
+
+LOG_FOLDER="$PROJECT_ROOT/logs"
+
+export PROJECT_ROOT
+export POSTGRES_HOST
+export POSTGRES_PORT
+export POSTGRES_DB
+export POSTGRES_USER
+export POSTGRES_PASSWORD
+export LOG_FOLDER

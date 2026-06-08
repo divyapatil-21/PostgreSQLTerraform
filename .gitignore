@@ -1,0 +1,4 @@
+tools/installers/
+tools/terraform/
+logs/
+*.log
