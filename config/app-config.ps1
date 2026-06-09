@@ -1,9 +1,10 @@
 $ProjectRoot = Resolve-Path "$PSScriptRoot\.."
 
 $PgInfo = Get-ItemProperty `
-"HKLM:\SOFTWARE\PostgreSQL\Installations\postgresql-x64-16"
+"HKLM:\SOFTWARE\PostgreSQL\Installations\postgresql-x64-16" `
+-ErrorAction SilentlyContinue
 
-$PgBase = $PgInfo."Base Directory"
+if($PgInfo){$PgBase = $PgInfo."Base Directory"} else {$PgBase = $null}
 
 $Global:Config = @{
 
@@ -14,12 +15,12 @@ $Global:Config = @{
     PostgreSQL = @{
         Host        = "localhost"
         Port        = "5433"
-        Database    = "DataManagementDB"
+        Database    = "datamanagementdb"
         Username    = "postgres"
         Password    = "Postgres@123"
         ServiceName = "postgresql-x64-16"
         InstallPath = $PgBase
-        PsqlPath    = Join-Path $PgBase "bin\psql.exe"
+        PsqlPath    = if($PgBase){Join-Path $PgBase "bin\psql.exe"} else {$null}
     }
 
     Logs = @{
